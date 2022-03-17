@@ -16,7 +16,7 @@ Parameters:
     Type: String
     Default: ApiGatewayLambda.zip
 
-  StateName:
+  StageName:
     Type: String
     Default: dev
 
@@ -217,7 +217,7 @@ Resources:
     DependsOn: [ MethodGetCustomers, MethodPostCustomers, MethodGetCustomersById, MethodPutCustomersById, MethodDeleteCustomersById ]
     Properties:
       RestApiId: !Ref RestApi
-      StageName: !Ref StateName
+      StageName: !Ref StageName
 
   LambdaPermission:
     Type: AWS::Lambda::Permission

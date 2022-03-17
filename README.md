@@ -1,4 +1,4 @@
-# Private API Gateway and Lambda
+# apigatewaylambda
 
 This project creates:
 - API Gateway;
