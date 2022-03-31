@@ -67,6 +67,14 @@ Resources:
         - Key: Owner
           Value: !Ref Owner
 
+  LambdaPermission:
+    Type: AWS::Lambda::Permission
+    DependsOn: Lambda
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !GetAtt Lambda.Arn
+      Principal: apigateway.amazonaws.com
+
   RestApi:
     Type: AWS::ApiGateway::RestApi
     DependsOn: Lambda
@@ -218,14 +226,6 @@ Resources:
     Properties:
       RestApiId: !Ref RestApi
       StageName: !Ref StageName
-
-  LambdaPermission:
-    Type: AWS::Lambda::Permission
-    DependsOn: Deployment
-    Properties:
-      Action: lambda:InvokeFunction
-      FunctionName: !GetAtt Lambda.Arn
-      Principal: apigateway.amazonaws.com
 
 Outputs:
 
